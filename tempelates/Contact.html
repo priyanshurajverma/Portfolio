@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <style>
+          .main{
+        border: 2px solid white;
+        height: 600px;
+        width: 90%;
+margin-top: 30px;
+     margin-left: 5%;
+     display: flex;
+     flex-direction: row;
+     border-radius: 15px;
+
+
+        }
+        body{
+            background-color: black;
+        }
+        .header{
+            height: 50px;
+            width: 100%;
+            color: blueviolet;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 20px;
+
+        
+        }
+        .home{
+            margin-left: 80px;
+        }
+        .line{
+            margin-left: 50px;
+        }
+        h1{
+            color: blueviolet;
+            margin-left: 500px;
+            font-size: 80px;
+        }
+        form{
+            background-color: black;
+            color: blueviolet;
+            margin-top: 200px;
+            font-size: 30px;
+            margin-right: 100px
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="header">_________________________________________________
+        <div class="home"><a href="index.html">Home</a></div>
+        <div class="home"><a href="About.html">About</a></div>
+        <div class="home"><a href="projects.html">Projects</a></div>
+        <div class="home"><a href="Services.html">Services</a></div>
+        <div class="home"><a href="Contact.html">Contact</a></div>
+       <div class="line">  _____________________________________________________________</div>
+    </div>
+    <div class="main">
+        <h1>Contact me</h1>
+      
+            <form action="#" method="post">
+               {% csrf_token %}
+                <div class="mb-3 mx-4">
+                    <label  class="form-label">Name:</label><br>
+                    <input type="text" class="form-control" name="name" id="uname" required>
+                  </div>
+                  <div class="mb-3 mx-4">
+                    <label  class="form-label">Contact:</label><br>
+                    <input type="text"  name="contact" required
+                    >
+                  </div>
+                    <div class="mb-3 mx-4">
+                      <label for="exampleInputEmail1" class="form-label" >Email address:</label><br>
+                      <input type="email" class="form-control" name="email" id="exampleInputEmail1" required>
+                      <div class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                
+                 
+                    <div class="mb-3 form-check mx-4">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                      <label class="form-check-label" for="exampleCheck1" >Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary mx-3" id="sub" onclick="abc() " >Submit</button>
+                  </form>
+                
+                
+                
+
+        </form>
+
+
+    </div>
+    
+</body>\
+
+<script>
+    function abc(){
+       
+    let uname;
+    uname = document.getElementById('uname');
+    while (uname == '') {
+        alert("No")
+        
+    }
+    }
+</script>
+</html>
