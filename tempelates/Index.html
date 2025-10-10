@@ -1,114 +1,239 @@
-<!DOCTYPE html>
+
+Below are the three ready-to-commit files for your portfolio upgrade. Copy each file into your repository at the exact path shown.
+
+---
+
+# 1) `index.html` (place at repo root)
+
+```html
+<!doctype html>
 <html lang="en">
 <head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <style>
-        *{
-            margin: 0px;
-            padding: 0px;
-        }
-        body{
-            background-color: black;
-        }
-       .main{
-        border: 2px solid white;
-        height: 600px;
-        width: 90%;
-margin-top: 30px;
-     margin-left: 5%;
-     display: flex;
-     flex-direction: row;
-    
-     border-radius: 15px;
-
-
-        }
-        a{
-            text-decoration: none;
-        }
-        .intro{
-            color: blueviolet;
-            width: 700px;
-            text-align: center;
-            margin-top: 200px;
-        }
-        .bor{
-            border-left: 2px solid white;
-        }
-        .dp{
-           
-          margin-top: 50px;
-            
-            margin-left:50px ;
-        }
-        .header{
-            height: 50px;
-            width: 100%;
-            color: blueviolet;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            margin-top: 20px;
-
-        
-        }
-        .home{
-            margin-left: 80px;
-        }
-        .line{
-            margin-left: 50px;
-        }
-        img{
-            box-shadow: 0 4px 8px 0 rgb(188, 14, 14), 0 6px 20px 0 rgba(204, 8, 8, 0.948);
-        }
-        .para{
-            font-size: 20px;
-        }
-        .mdp{
-            z-index: 2;
-            border: 1px solid white;
-            height:420px;
-            width: 420px;
-            float: inline-start;
-            margin-left: 90px;
-            border-radius: 100%;
-   
-            
-        }
-        .dp{
-            display: flex;
-            text-align: center;
-            justify-content: center;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Priyanshu — Portfolio</title>
+  <meta name="description" content="Priyanshu — Web Developer | React | Django | Frontend" />
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Priyanshu — Portfolio" />
+  <meta property="og:description" content="Web Developer | React | Django | Frontend" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://priyanshurajverma.github.io/Portfolio/" />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    :root{
+      --bg: #0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#06b6d4; --glass: rgba(255,255,255,0.04);
+      --text:#e6eef6;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,#061021 0%, #071022 60%);
+      color:var(--text);line-height:1.45;padding:24px;
+    }
+    .container{max-width:980px;margin:0 auto}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .avatar{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px}
+    h1{margin:6px 0 0;font-size:28px}
+    p.lead{color:var(--muted);margin:6px 0 18px}
+    .hero{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start;margin-top:20px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .buttons{display:flex;gap:10px}
+    a.btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;background:linear-gradient(90deg,#0ea5a6,#7c3aed);color:white;font-weight:600}
+    .small{font-size:13px;color:var(--muted)}
+    .projects{margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+    .proj{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+    .proj img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+    footer{margin:40px 0 20px;color:var(--muted);font-size:13px;text-align:center}
+    .techs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .chip{padding:6px 8px;border-radius:999px;background:var(--glass);font-size:13px;color:var(--muted)}
+    .socials{display:flex;gap:10px;margin-top:10px}
+    .contact-form input,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:var(--text);margin-bottom:8px}
+    .contact-form button{padding:10px 12px;border-radius:8px;border:0;background:var(--accent);color:#021;cursor:pointer;font-weight:700}
+    @media (max-width:880px){ .hero{grid-template-columns:1fr} .brand h1{font-size:20px} .avatar{width:56px;height:56px} }
+  </style>
 </head>
 <body>
-    <div class="header">_________________________________________________
-        <div class="home"><a href="index.html">Home</a></div>
-        <div class="home"><a href="About.html">About</a></div>
-        <div class="home"><a href="projects.html">Projects</a></div>
-        <div class="home"><a href="Services.html">Services</a></div>
-        <div class="home"><a href="Contact.html">Contact</a></div>
-       <div class="line">  _____________________________________________________________</div>
-    </div>
- 
-    <div class="main">
-        <div class="intro">
-            <p>Hi I am</p>
-            <h1>Priyanshu Raj</h1>
-            <p class="para">I am a FullStack Web Developer passionate about creating innovative websites</p>
-            <p class="para">My goal is to create websites that makes some hustel in the web industry</p>
-
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="avatar">P</div>
+        <div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <h1>Priyanshu — Web Developer</h1>
+          </div>
+          <div class="small">React • Django • JavaScript • Frontend</div>
         </div>
-        <div class="bor"></div>
-        <div class="dp">
-            <div class="mdp" ><img src="static/profile2.jpg\" alt="profile" style="width: 100%; height: 100%; border-radius: 100%;"></div>
-            
+      </div>
+      <nav class="buttons">
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="intro">
+      <div>
+        <div class="card">
+          <h2 id="intro">Hello — I'm Priyanshu</h2>
+          <p class="lead">I build responsive web apps and user interfaces. I love clean UI, performance and converting ideas into pixel-perfect products. I’m open to internships and freelance projects.</p>
+          <div class="techs" aria-hidden>
+            <span class="chip">React</span>
+            <span class="chip">Django</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">HTML & CSS</span>
+            <span class="chip">REST APIs</span>
+          </div>
+
+          <div style="margin-top:16px" class="buttons">
+            <a class="btn" href="resume.pdf" download>Download Resume</a>
+            <a class="btn" id="live-link" href="#" target="_blank">See Live Projects</a>
+          </div>
         </div>
 
-    </div>
+        <div id="projects" style="margin-top:18px">
+          <h3 class="small">Selected Projects</h3>
+          <div class="projects" id="projects-list">
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h4 class="small">Contact</h4>
+          <div class="small">Based in India • Open to work</div>
+          <div class="socials" role="list">
+            <a class="small" href="https://github.com/priyanshurajverma" target="_blank">GitHub</a>
+            <a class="small" href="https://www.linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
+            <a class="small" href="mailto:your.email@example.com">Email</a>
+          </div>
+
+          <hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:12px 0">
+
+          <form id="contact" class="contact-form" action="https://formspree.io/f/yourformid" method="POST">
+            <input name="name" placeholder="Your name" required>
+            <input name="_replyto" placeholder="Email address" type="email" required>
+            <textarea name="message" rows="4" placeholder="Message" required></textarea>
+            <button type="submit">Send message</button>
+          </form>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Priyanshu • Built with ♥ • View on <a href="https://github.com/priyanshurajverma/Portfolio" target="_blank">GitHub</a></div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const projects = [
+      {
+        "title":"Personal Portfolio (This site)",
+        "desc":"Static portfolio built to highlight projects and contact info. Responsive design and simple content management.",
+        "image":"https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop",
+        "live":"https://priyanshurajverma.github.io/Portfolio/",
+        "repo":"https://github.com/priyanshurajverma/Portfolio"
+      }
+    ];
+
+    const list = document.getElementById('projects-list');
+    projects.forEach(p=>{
+      const el = document.createElement('article');
+      el.className='proj';
+      el.innerHTML = `\n        <img src="${p.image}" alt="${p.title} screenshot" loading="lazy" />\n        <h4 style="margin:8px 0 6px">${p.title}</h4>\n        <div style="color:var(--muted);font-size:14px">${p.desc}</div>\n        <div style="margin-top:8px;display:flex;gap:8px">\n          <a class="small" href="${p.live}" target="_blank">Live</a>\n          <a class="small" href="${p.repo}" target="_blank">Code</a>\n        </div>\n      `;
+      list.appendChild(el);
+    });
+
+    const liveLink = document.getElementById('live-link');
+    if (projects[0] && projects[0].live) liveLink.href = projects[0].live;
+
+    const form = document.querySelector('.contact-form');
+    form.addEventListener('submit', (e)=>{
+      setTimeout(()=>alert('Message sent — thank you!'), 200);
+    });
+  </script>
 </body>
 </html>
+```
+
+---
+
+# 2) `README.md` (place at repo root)
+
+```markdown
+# Priyanshu — Portfolio
+
+This repository contains my public portfolio website.
+
+**Live demo (after deploy):** https://priyanshurajverma.github.io/Portfolio/
+
+## What’s included
+
+- `index.html` — static single-file portfolio (responsive)
+- `resume.pdf` — (add your resume file here)
+
+## How to deploy with GitHub Pages (automatic via GitHub Actions)
+
+1. Commit these files to your `main` branch.
+2. Create a branch named `gh-pages` (the workflow will update it automatically the first run). You don't need to push content to it manually.
+3. Go to **Settings → Pages** and ensure the source is set to `gh-pages` branch (or choose `GitHub Actions` option if shown).
+
+This repo includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) to automatically deploy the site to the `gh-pages` branch whenever you push to `main`.
+
+## Manual quick deploy (alternative)
+
+1. Push `index.html` to the `docs/` folder and in GitHub repository **Settings → Pages** set the source to the `main` branch and `/docs` folder.
+
+## Customize
+
+- Update `index.html` to add more projects to the `projects` array.
+- Replace social links, Formspree action URL and `resume.pdf`.
+
+---
+
+```
+
+---
+
+# 3) `.github/workflows/deploy.yml` (create this path)
+
+```yaml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (for cache, not required but good for future builds)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # target branch
+          folder: '.'      # publish the repo root (index.html)
+          clean: true
+```
+
+---
+
+# Quick next steps (do these AFTER you add files to your repo)
+
+1. Commit and push `index.html`, `README.md`, and `.github/workflows/deploy.yml` to `main`.
+2. (Optional) Add `resume.pdf` at repo root and update contact links inside `index.html`.
+3. Wait ~1-2 minutes for the GitHub Action to run. It will create/update the `gh-pages` branch and deploy. You can check Actions tab in GitHub for status.
+4. In GitHub → Settings → Pages, ensure the site is served from the `gh-pages` branch (or GitHub may automatically set this after the action runs).
+
+If you want, I can also generate a patch (diff) you can apply with `git apply` — say "patch" and I will create it.
