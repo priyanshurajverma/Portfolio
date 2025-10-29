@@ -6,3 +6,4 @@ class Contact(models.Model):
 
 
 # Create your models here.
+

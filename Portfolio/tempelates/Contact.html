@@ -71,24 +71,25 @@ margin-top: 30px;
                {% csrf_token %}
                 <div class="mb-3 mx-4">
                     <label  class="form-label">Name:</label><br>
-                    <input type="text" class="form-control" name="name" >
+                    <input type="text" class="form-control" name="name" id="uname" required>
                   </div>
                   <div class="mb-3 mx-4">
                     <label  class="form-label">Contact:</label><br>
-                    <input type="text"  name="contact">
+                    <input type="text"  name="contact" required
+                    >
                   </div>
                     <div class="mb-3 mx-4">
-                      <label for="exampleInputEmail1" class="form-label">Email address:</label><br>
-                      <input type="email" class="form-control" name="email" id="exampleInputEmail1">
+                      <label for="exampleInputEmail1" class="form-label" >Email address:</label><br>
+                      <input type="email" class="form-control" name="email" id="exampleInputEmail1" required>
                       <div class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                 
                  
                     <div class="mb-3 form-check mx-4">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                      <label class="form-check-label" for="exampleCheck1" >Check me out</label>
                     </div>
-                    <button type="submit" class="btn btn-primary mx-3">Submit</button>
+                    <button type="submit" class="btn btn-primary mx-3" id="sub" onclick="abc() " >Submit</button>
                   </form>
                 
                 
@@ -99,5 +100,17 @@ margin-top: 30px;
 
     </div>
     
-</body>
+</body>\
+
+<script>
+    function abc(){
+       
+    let uname;
+    uname = document.getElementById('uname');
+    while (uname == '') {
+        alert("No")
+        
+    }
+    }
+</script>
 </html>

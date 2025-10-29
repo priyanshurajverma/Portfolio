@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("",include("priyanshu.urls")),
     # urls.py
-    path('supersecret/', admin.site.urls),
+
 
 
 ]

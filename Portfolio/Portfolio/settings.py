@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+import os
+import dj_database_url
+from decouple import config
 
 from pathlib import Path
 
@@ -20,13 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-37+be^1)v3wzlq+4!_)x8zaz&ftb7t^gm4u%vcguf&#+-p6ubd'
+SECRET_KEY = ("django-insecure-37+be^1)v3wzlq+4!_)x8zaz&ftb7t^gm4u%vcguf&#+-p6ubd")
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -35,19 +39,24 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
+    'django.contrib.messages',      
     'django.contrib.staticfiles',
-    'priyanshu.apps.PriyanshuConfig'
-]
+    'priyanshu.apps.PriyanshuConfig',
+
+   ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+
+    
 ]
 
 ROOT_URLCONF = 'Portfolio.urls'
@@ -74,13 +83,11 @@ WSGI_APPLICATION = 'Portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
+
+DATABASES = {
+    'default': dj_database_url.config(default='postgres://my_portfoliodb_user:zbErSLUZwlixdMHlOBz4GsKp7OTC3QBV@dpg-d1q8m16r433s73e3pct0-a.oregon-postgres.render.com:5432/my_portfoliodb')
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -116,11 +123,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS=[
-    BASE_DIR,"static"
+STATIC_URL = '/static/'
+
+# This is where collectstatic will collect files for production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# This tells Django where to look for additional static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
